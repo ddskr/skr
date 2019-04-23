@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/ddskr/skr/cli"
 	"github.com/ddskr/skr/grammar"
 	"github.com/ddskr/skr/grammar/ast"
 	"github.com/ddskr/skr/grammar/selector"
@@ -18,8 +19,8 @@ import (
 	"github.com/llir/llvm/ir/value"
 )
 
-func parser(modName string) {
-	mod := CFG.Path[0] + "/src/" + modName
+func parser(cfg *cli.SkrConfig) {
+	mod := cfg.Path[0] + "/src/" + cfg.Input
 	files := make([]string, 0)
 
 	roots := make([]*ast.Node, 0)
