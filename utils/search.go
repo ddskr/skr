@@ -5,14 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-
-	"github.com/ddskr/skr/cli"
 )
-
-func init() {
-	// `utils` use the cfg in `cli`, so can't move this to `cli`
-	cli.CFG.Mod = SearchModFile()
-}
 
 // SearchModFile search dir of "skr.mod" or "go.mod"
 func SearchModFile() string {

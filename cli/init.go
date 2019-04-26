@@ -3,6 +3,7 @@ package cli
 import (
 	"path"
 
+	"github.com/ddskr/skr/utils"
 	"github.com/joho/godotenv"
 	"github.com/timest/env"
 )
@@ -54,4 +55,6 @@ func init() {
 		panic(err)
 	}
 	// pretty.Println(CFG)
+
+	CFG.Mod = utils.SearchModFile()
 }
