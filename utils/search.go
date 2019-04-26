@@ -30,7 +30,7 @@ func SearchModFile() string {
 }
 
 func upSearchFile(reg *regexp.Regexp, dir string) string {
-	println("finding in", dir)
+	// println("finding in", dir)
 	if dir == "" || dir == "/" || dir == filepath.Dir(dir) {
 		return ""
 	}
@@ -40,7 +40,7 @@ func upSearchFile(reg *regexp.Regexp, dir string) string {
 	}
 	for _, v := range list {
 		if !v.IsDir() && reg.MatchString(v.Name()) {
-			return dir
+			return filepath.Join(dir, v.Name())
 		}
 	}
 	return upSearchFile(reg, filepath.Dir(dir))

@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"os/exec"
+	"path"
 
 	"github.com/ddskr/skr/cli"
 	"github.com/ddskr/skr/utils"
@@ -18,7 +19,8 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 			cli.CFG.Input = args[0]
 
-			repoPath, rootPath /*, repo, dirPath*/, _, _ := utils.ParsePackageRepo(cli.CFG.Input)
+			repoPath, remote, user /*, repo, dirPath, auto*/, _, _, _ := utils.ParsePackageRepo(cli.CFG.Input)
+			rootPath := path.Join(cli.CFG.DefaultSrcPath(), remote, user)
 			if err := os.MkdirAll(rootPath, 0755); err != nil {
 				panic(err)
 			}
